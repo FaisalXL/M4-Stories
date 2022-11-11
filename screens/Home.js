@@ -3,14 +3,14 @@ import { Pressable, ImageBackground, TouchableOpacity, Button, StyleSheet, Text,
 const Home = ({navigation}) => {
   return (
     <View style={styles.main}>
-        <ImageBackground source={require("../background-restaurant.jpeg")} style={styles.main}>
+        <ImageBackground source={require("../assets/menubg1.jpeg")} style={styles.main}>
             <Text style ={styles.hometext}>
                 Welcome to Stories
             </Text>
             <Pressable style={styles.menuButton} onPress={() => navigation.navigate("Menu")}>
-                <Text style={{fontSize: 40, color: 'white'}}>Menu</Text>
+                <Text style={{fontSize: 40, color: 'black', borderColor: 'black'}}>Menu</Text>
             </Pressable>
-            <Text style={{bottom:0, position: 'absolute', paddingBottom: 20, color: 'white', alignSelf: 'center'}}>
+            <Text style={{bottom:0, position: 'absolute', paddingBottom: 20, color: 'black', alignSelf: 'center', margin: 10}}>
                 Disclaimer: Handle Device with care - Stories Management
             </Text>
         </ImageBackground>
@@ -21,18 +21,16 @@ const Home = ({navigation}) => {
 
 const styles = StyleSheet.create({
     main:{
-        height: '100%',
-        width: '100%'
-
+        flex: 1
     },
     hometext : {
         marginTop: 150,
         flex: 0.1,
         paddingVertical: 40,
         borderWidth: 2,
-        borderColor: "white",
+        borderColor: "black",
         borderRadius: 4,
-        color: "white",
+        color: "black",
         textAlign: "center",
         fontSize: 30,
         fontWeight: "bold",

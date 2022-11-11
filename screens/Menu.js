@@ -1,41 +1,36 @@
-import React from 'react'
-import {SectionList, FlatList, StyleSheet, View,Text} from 'react-native'
-
+import React from "react";
+import { SectionList, FlatList, StyleSheet, View, Text } from "react-native";
+import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 
 const DATA = [
   {
-    title: "Main dishes",
-    data: ["Pizza", "Burger", "Risotto"]
-  },
-  {
-    title: "Sides",
-    data: ["French Fries", "Onion Rings", "Fried Shrimps"]
-  },
-  {
-    title: "Drinks",
-    data: ["Water", "Coke", "Beer"]
-  },
-  {
-    title: "Desserts",
-    data: ["Cheese Cake", "Ice Cream"]
-  },
-  {
-    title: "Just Veggie Tings",
-    data: ["Green Veggie", "Paneer", "Paneer 2.0", "Paneer Special Edition"]
+    title: "Main Dishes",
+    images: [{name: "pizza", img: require("./assets/FoodImages/Pizzas/ClassicMargherita.jpg")},
+    {name: "pasta", img: require("./assets/FoodImages/Pastas/ArrabiataSauce.jpg")},
+    {name: "eggnostic", img: require("./assets/FoodImages/Eggnostic/EggGheeRoast.jpg")},
+    {name: "salads", img: require("./assets/FoodImages/salads/CeaserSalad.jpg")},
+    {name: "chicken", img: require("./assets/chicken/tangdikebab.jpg")},
+  ],
   },
   {
     title: "Bar",
-    data: ["Sex on the beach", "Sunset Shaker", "your mom"]
-  }
+    images: [{name: "garden farm", img: require("./assets/FoodImages/Cocktails/GardenFarm.png")},
+    {name: "gin basil", img: require("./assets/FoodImages/Cocktails/GinBasilSmash.png")},
+    {name: "martini", img: require("./assets/FoodImages/Cocktails/Martini.jpg")},
+    {name: "stories untraveled", img: require("./assets/FoodImages/Cocktails/TheStoriesUntravalled.png")},
+    {name: "mary pickford", img: require("./assets/FoodImages/Cocktails/MaryPickford.jpg")},
+  ],
+  },
 ];
 
-const ItemCard = ({title}) => {
-  return (<View style={styles.items}>
-    <Text style={styles.itemFont}>
-      {title}
-    </Text>
-  </View>)
-}
+
+const ItemCard = ({ title }) => {
+  return (
+    <View style={styles.items}>
+      <Text style={styles.itemFont}>{title}</Text>
+    </View>
+  );
+};
 
 const Menu = () => {
   return (
@@ -45,32 +40,42 @@ const Menu = () => {
       renderItem={({ item }) => null}
       renderSectionHeader={({ section }) => (
         <>
-          <Text style={{fontSize: 25}}>{section.title}</Text>
+          <Pressable>
+            <View style={{justifyContent: "center", margin: 7}}>
+            <Text style={{ fontSize: 30}}>{section.title}</Text>
+            </View>
+          </Pressable>
           <FlatList
-          horizontal
-          data={section.data}
-          renderItem={({ item }) => <ItemCard title={item} />}
-          showsHorizontalScrollIndicator={false}
-        />
+            horizontal
+            data={section.data}
+            renderItem={({ item }) => (
+            <Pressable>
+            <View>
+              <Image source = {item.images.img}/>
+            </View>
+            </Pressable>
+            )}
+            showsHorizontalScrollIndicator={false}
+          />
         </>
-      )}
+      )}  
     />
-  )
-}
+  );
+};
 
-const styles = StyleSheet.create(
-  {
-    menu: {
-      flex: 1,
-      backgroundColor: "white"
-    },
-    items: {
-      backgroundColor: "pink"
-    },
-    itemFont: {
-      fontSize: 100
-    }
-  }
-)
+const Menu1 = () => {};
 
-export default Menu
+const styles = StyleSheet.create({
+  menu: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+  items: {
+    backgroundColor: "pink",
+  },
+  itemFont: {
+    fontSize: 100,
+  },
+});
+
+export default Menu;
