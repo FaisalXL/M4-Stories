@@ -1,65 +1,103 @@
 import React from "react";
-import { SectionList, FlatList, StyleSheet, View, Text } from "react-native";
+import {
+  SectionList,
+  FlatList,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Dimensions,
+  ImageBackground,
+} from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 const DATA = [
   {
-    title: "Main Dishes",
-    images: [{name: "pizza", img: require("./assets/FoodImages/Pizzas/ClassicMargherita.jpg")},
-    {name: "pasta", img: require("./assets/FoodImages/Pastas/ArrabiataSauce.jpg")},
-    {name: "eggnostic", img: require("./assets/FoodImages/Eggnostic/EggGheeRoast.jpg")},
-    {name: "salads", img: require("./assets/FoodImages/salads/CeaserSalad.jpg")},
-    {name: "chicken", img: require("./assets/chicken/tangdikebab.jpg")},
-  ],
+    name: "pizza",
+    img: require("../assets/FoodImages/Pizzas/ClassicMargherita.jpg"),
   },
   {
-    title: "Bar",
-    images: [{name: "garden farm", img: require("./assets/FoodImages/Cocktails/GardenFarm.png")},
-    {name: "gin basil", img: require("./assets/FoodImages/Cocktails/GinBasilSmash.png")},
-    {name: "martini", img: require("./assets/FoodImages/Cocktails/Martini.jpg")},
-    {name: "stories untraveled", img: require("./assets/FoodImages/Cocktails/TheStoriesUntravalled.png")},
-    {name: "mary pickford", img: require("./assets/FoodImages/Cocktails/MaryPickford.jpg")},
-  ],
+    name: "pasta",
+    img: require("../assets/FoodImages/Pastas/ArrabiataSauce.jpg"),
   },
+  {
+    name: "eggnostic",
+    img: require("../assets/FoodImages/Eggnostic/EggGheeRoast.jpg"),
+  },
+  {
+    name: "salads",
+    img: require("../assets/FoodImages/salads/CeaserSalad.jpg"),
+  },
+  { name: "chicken", img: require("../assets/chicken/tangdikebab.jpg") },
 ];
-
-
-const ItemCard = ({ title }) => {
-  return (
-    <View style={styles.items}>
-      <Text style={styles.itemFont}>{title}</Text>
-    </View>
-  );
-};
 
 const Menu = () => {
   return (
-    <SectionList
-      sections={DATA}
-      keyExtractor={(item, index) => item + index}
-      renderItem={({ item }) => null}
-      renderSectionHeader={({ section }) => (
-        <>
-          <Pressable>
-            <View style={{justifyContent: "center", margin: 7}}>
-            <Text style={{ fontSize: 30}}>{section.title}</Text>
-            </View>
-          </Pressable>
-          <FlatList
-            horizontal
-            data={section.data}
-            renderItem={({ item }) => (
+    <View>
+      <ImageBackground
+        source={require("../assets/menubg2.jpeg")}
+        style={{ width: windowWidth, height: windowHeight }}
+      >
+      <ScrollView>
+        <Text style={styles.titletext}>Best Sellers</Text>
+        <FlatList
+          horizontal
+          data={DATA}
+          renderItem={({ item }) => (
             <Pressable>
-            <View>
-              <Image source = {item.images.img}/>
-            </View>
+              <View>
+                <Image source={item.img} style={styles.items} />
+              </View>
             </Pressable>
-            )}
-            showsHorizontalScrollIndicator={false}
-          />
-        </>
-      )}  
-    />
+          )}
+          showsHorizontalScrollIndicator={false}
+        />
+        <Text style={styles.titletext}>Pizzas</Text>
+        <FlatList
+          horizontal
+          data={DATA}
+          renderItem={({ item }) => (
+            <Pressable>
+              <View>
+                <Image source={item.img} style={styles.items} />
+              </View>
+            </Pressable>
+          )}
+          showsHorizontalScrollIndicator={false}
+        />
+        <Text style={styles.titletext}>Best Sellers</Text>
+        <FlatList
+          horizontal
+          data={DATA}
+          renderItem={({ item }) => (
+            <Pressable>
+              <View>
+                <Image source={item.img} style={styles.items} />
+              </View>
+            </Pressable>
+          )}
+          showsHorizontalScrollIndicator={false}
+        />
+        <Text style={styles.titletext}>Best Sellers</Text>
+        <FlatList
+          horizontal
+          data={DATA}
+          renderItem={({ item }) => (
+            <Pressable>
+              <View>
+                <Image source={item.img} style={styles.items} />
+              </View>
+            </Pressable>
+          )}
+          showsHorizontalScrollIndicator={false}
+        />
+      </ScrollView>
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -71,10 +109,14 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   items: {
-    backgroundColor: "pink",
+    width: windowWidth * 0.7,
+    height: windowHeight / 5,
+    marginHorizontal: 10,
   },
-  itemFont: {
-    fontSize: 100,
+  titletext: {
+    fontSize: 30,
+    margin: 5,
+    alignItems: "center",
   },
 });
 
