@@ -11,6 +11,9 @@ import {
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import PizzaScreen from './PizzaScreen';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -35,7 +38,7 @@ const DATA = [
   { name: "chicken", img: require("../assets/chicken/tangdikebab.jpg") },
 ];
 
-const Menu = () => {
+const Menu = ({navigation}) => {
   return (
     <View>
       <ImageBackground
@@ -43,12 +46,14 @@ const Menu = () => {
         style={{ width: windowWidth, height: windowHeight }}
       >
       <ScrollView>
-        <Text style={styles.titletext}>Best Sellers</Text>
+        <Pressable onPress ={()=> navigation.navigate("PizzaScreen")}>
+          <Text style={styles.titletext}>Best Sellers</Text>
+        </Pressable>
         <FlatList
           horizontal
           data={DATA}
           renderItem={({ item }) => (
-            <Pressable>
+            <Pressable >
               <View>
                 <Image source={item.img} style={styles.items} />
               </View>
@@ -56,7 +61,9 @@ const Menu = () => {
           )}
           showsHorizontalScrollIndicator={false}
         />
-        <Text style={styles.titletext}>Pizzas</Text>
+        <Pressable>
+          <Text style={styles.titletext}>Pizzas</Text>
+        </Pressable>
         <FlatList
           horizontal
           data={DATA}
