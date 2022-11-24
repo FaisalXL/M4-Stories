@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  SectionList,
   FlatList,
   StyleSheet,
   View,
@@ -9,11 +8,15 @@ import {
   Dimensions,
   ImageBackground,
 } from "react-native";
+import { useState } from "react";
+import FocusedStatusBar from "../components/FocusedStatusBar";
+import ItemCard from "../components/ItemCard";
 import { ScrollView } from "react-native-gesture-handler";
 import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import PizzaScreen from './PizzaScreen';
+
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -45,6 +48,7 @@ const Menu = ({navigation}) => {
         source={require("../assets/menubg2.jpeg")}
         style={{ width: windowWidth, height: windowHeight }}
       >
+      <FocusedStatusBar />
       <ScrollView>
         <Pressable onPress ={()=> navigation.navigate("PizzaScreen")}>
           <Text style={styles.titletext}>Best Sellers</Text>

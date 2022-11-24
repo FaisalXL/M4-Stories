@@ -1,5 +1,6 @@
 import React from 'react'
-import { Pressable, ImageBackground, TouchableOpacity, Button, StyleSheet, Text, View } from 'react-native'
+import { Pressable, ImageBackground, StyleSheet, Text, View } from 'react-native'
+import { useState } from 'react'
 const Home = ({navigation}) => {
   return (
     <View style={styles.main}>

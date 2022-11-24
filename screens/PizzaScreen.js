@@ -1,28 +1,10 @@
-import React from "react";
-import {
-  SectionList,
-  FlatList,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Dimensions,
-  ImageBackground,
-} from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import { exp } from "react-native/Libraries/Animated/Easing";
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import React from 'react'
+import { Text } from 'react-native'
 
-const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
-
-const PizzaScreen =() =>{
-  return(
-    <View>
-      <Text>Test</Text>
-    </View>
-
-  );
+const PizzaScreen = () => {
+  return (
+    <Text>PizzaScreen</Text>
+  )
 }
 
-export default PizzaScreen;
+export default PizzaScreen
