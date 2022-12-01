@@ -45,7 +45,6 @@ const DATA = [
 
 
 const Menu = ({navigation}) => {
-  const [modalOpen, setModalOpen] = useState(false)
   return (
     <View>
       <ImageBackground
@@ -53,11 +52,11 @@ const Menu = ({navigation}) => {
         style={{ width: windowWidth, height: windowHeight }}
       >
       <ScrollView>
-        <Modal>
+        {/* <Modal>
           <View>
 
           </View>
-        </Modal>
+        </Modal> */}
         <Pressable onPress ={()=> navigation.navigate("PizzaScreen")}>
           <Text style={styles.titletext}>Best Sellers</Text>
         </Pressable>
@@ -65,7 +64,7 @@ const Menu = ({navigation}) => {
           horizontal
           data={DATA}
           renderItem={({ item }) => (
-            <Pressable onPress = {() => functionCombined(item, setModalOpen(true))}>
+            <Pressable>
               <View>
                 <Image source={item.img} style={styles.items} />
               </View>

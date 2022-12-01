@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import Home from './screens/Home';
 import Menu from './screens/Menu'
+import PizzaScreen from './screens/PizzaScreen';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,8 @@ export default function App() {
           )
         }
       }}/>
+      <Stack.Screen name="PizzaScreen"  component={PizzaScreen} options={{
+      }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
