@@ -7,6 +7,7 @@ import {
   Image,
   Dimensions,
   ImageBackground,
+  Modal,
 } from "react-native";
 import { useState } from "react";
 import FocusedStatusBar from "../components/FocusedStatusBar";
@@ -41,15 +42,22 @@ const DATA = [
   { name: "chicken", img: require("../assets/chicken/tangdikebab.jpg") },
 ];
 
+
+
 const Menu = ({navigation}) => {
+  const [modalOpen, setModalOpen] = useState(false)
   return (
     <View>
       <ImageBackground
         source={require("../assets/menubg2.jpeg")}
         style={{ width: windowWidth, height: windowHeight }}
       >
-      <FocusedStatusBar />
       <ScrollView>
+        <Modal>
+          <View>
+
+          </View>
+        </Modal>
         <Pressable onPress ={()=> navigation.navigate("PizzaScreen")}>
           <Text style={styles.titletext}>Best Sellers</Text>
         </Pressable>
@@ -57,7 +65,7 @@ const Menu = ({navigation}) => {
           horizontal
           data={DATA}
           renderItem={({ item }) => (
-            <Pressable >
+            <Pressable onPress = {() => functionCombined(item, setModalOpen(true))}>
               <View>
                 <Image source={item.img} style={styles.items} />
               </View>
@@ -112,7 +120,6 @@ const Menu = ({navigation}) => {
   );
 };
 
-const Menu1 = () => {};
 
 const styles = StyleSheet.create({
   menu: {
@@ -123,6 +130,7 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.7,
     height: windowHeight / 5,
     marginHorizontal: 10,
+    borderRadius: 10
   },
   titletext: {
     fontSize: 30,
