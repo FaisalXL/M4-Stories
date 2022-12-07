@@ -6,6 +6,7 @@ import Home from './screens/Home';
 import Menu from './screens/Menu'
 import PizzaScreen from './screens/Best Sellers';
 import BestSellerScreen from './screens/Best Sellers';
+import BarScreen from './screens/Bar';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,9 @@ export default function App() {
         }
       }}/>
       <Stack.Screen name="Best Sellers"  component={BestSellerScreen} options={{
+        headerShadowVisible: false
+      }} />
+      <Stack.Screen name="Bar"  component={BarScreen} options={{
       }} />
       </Stack.Navigator>
     </NavigationContainer>

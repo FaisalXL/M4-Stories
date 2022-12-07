@@ -8,6 +8,7 @@ import {
   Dimensions,
   ImageBackground,
   Modal,
+  SafeAreaView,
 } from "react-native";
 import { useState } from "react";
 import FocusedStatusBar from "../components/FocusedStatusBar";
@@ -41,10 +42,31 @@ const DATA = [
   }
 ];
 
+const DATA2 = [
+  {
+    name: "Garden Farm",
+    img: require("../assets/FoodImages/Cocktails/GardenFarm.png"),
+  },
+  {
+    name: "Margarita",
+    img: require("../assets/FoodImages/Cocktails/Margarita.jpg"),
+  },
+  {
+    name: "Martini",
+    img: require("../assets/FoodImages/Cocktails/Martini.jpg"),
+  },
+  {
+    name: "Mary Pickford",
+    img: require("../assets/FoodImages/Cocktails/MaryPickford.jpg"),
+  }
+
+];
+
 
 
 const Menu = ({navigation}) => {
   return (
+    <SafeAreaView>
     <View>
       <ImageBackground
         source={require("../assets/menubg2.jpeg")}
@@ -62,6 +84,21 @@ const Menu = ({navigation}) => {
         <FlatList
           horizontal
           data={DATA}
+          renderItem={({ item }) => (
+            <Pressable>
+              <View>
+                <Image source={item.img} style={styles.items} />
+              </View>
+            </Pressable>
+          )}
+          showsHorizontalScrollIndicator={false}
+        />
+        <Pressable onPress ={()=> navigation.navigate("Bar")}>
+          <Text style={styles.titletext}>Bar</Text>
+        </Pressable>
+        <FlatList
+          horizontal
+          data={DATA2}
           renderItem={({ item }) => (
             <Pressable>
               <View>
@@ -115,6 +152,7 @@ const Menu = ({navigation}) => {
       </ScrollView>
       </ImageBackground>
     </View>
+    </SafeAreaView>
   );
 };
 

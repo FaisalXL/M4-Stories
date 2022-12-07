@@ -55,7 +55,7 @@ const BestSellerScreen = () => {
           <Pressable>
             <View>
               <Image source={item.img} style={styles.items} />
-              <Text>Name will be here</Text>
+              <Text style={styles.titletext}>{item.name}</Text>
             </View>
           </Pressable>
         )}
